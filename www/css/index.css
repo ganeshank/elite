@@ -1,0 +1,381 @@
+/**************index.html*******************/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   color: #fff;
+}
+::-moz-placeholder { /* Firefox 19+ */
+   color: #fff;
+}
+:-ms-input-placeholder { /* IE 10+ */
+   color: #fff;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+
+#welcome_screen
+{
+	background-image:url('../img/8.jpg');	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: fixed;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+} 
+.wlcm-logo
+{
+	position: absolute;
+	bottom: 100px;
+	right: 0;
+	left: 0;
+	margin:0 auto;
+	text-align: center;
+}
+.login-panel
+{
+background-color: rgb(107,132,232);
+position: absolute;
+bottom: 0;
+width: 100%;
+text-align: center;
+font-size: 16px;
+text-transform: uppercase;
+left: 0;
+right: 0;
+padding: 10px 0;
+}
+.login-panel a
+{
+	color: #fff;
+	text-decoration: none;
+	}
+@media all and (max-width:767px) {
+
+.wthree-pro img
+{
+width: 200px;
+	}
+	}
+
+/********************************************/
+/*******************login.html**************************/
+#login_screen
+{
+     background-image:url('../img/8.jpg');	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: fixed;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0; 
+	left: 0;
+	bottom: 0;	
+}
+.center-container {
+    padding: 0;
+    background: rgba(0, 0, 0, 0.62);
+    height: 100%;
+}
+
+.header-login {
+    background-color: #fff;
+    overflow: hidden;
+    padding: 17px 0;
+    width: 100%;
+    font-weight: bold;
+    position: fixed;
+   top:0;
+   z-index:99999;
+   font-size: 17px;
+}
+.user_circle
+{
+	margin-top: 50px;
+}
+/*--//header--*/
+
+/*--main--*/
+.main-content-agile {
+    margin: 0 auto;
+    width: 34%;
+    height: 100%;
+     padding-top: 50px;
+}
+.wthree-pro {
+  text-align: center;
+}
+.wthree-pro h2 {
+    font-size: 1.7em;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 1em 0;
+    font-weight: 600;
+}
+.sub-main-w3{
+	position:relative;
+	padding: 3em;
+}
+.sub-main-w3 input[type="email"], .sub-main-w3 input[type="password"] {
+    outline: none;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: none;
+    width: 92.5%;
+    color: #fff;
+    padding: 1em 0 1em 3em;
+    letter-spacing: 1px;
+    font-family: 'Philosopher', sans-serif;
+}
+.sub-main-w3 input[type="password"]{
+	margin-top: 1.5em;
+}
+.sub-main-w3 #loginbtn {
+    color: #fff;
+   // background: #011750;
+    border: none;
+    padding: .5em 4em;
+    outline: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    letter-spacing: 1px;
+	margin-top: 2.5em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+	font-family: 'Philosopher', sans-serif;
+	width:100%;
+
+	background: rgba(0, 0, 0, 0) linear-gradient(#0035ba, #011750) repeat scroll 0 0;
+	border: 1px solid #fff;
+	box-shadow: 3px 4px 5px hsl(0, 0%, 0%);
+}
+.logintxt
+{
+color: #fff;
+font-size: 25px;
+padding-top: 20px;
+}
+#loginbtn .fa
+{
+	padding-right: 20px;
+}
+.sub-main-w3 #loginbtn:hover {
+    //background: #011750;
+    background: rgba(0, 0, 0, 0) linear-gradient(#4874f6, #2645c4) repeat scroll 0 0;
+    box-shadow:0px 0px 10px #333 inset,3px 4px 5px hsl(0, 0%, 0%);
+    color: #fff;
+}
+span.icon1, span.icon2 {
+    color: #fff;
+    font-size: 1em;
+	position: absolute;
+}
+span.icon1 {
+    top: 17%;
+}
+span.icon2 {
+    top: 40%;
+}
+span.icon1, span.icon2{
+	//right: 80%;
+	left:45px;
+}
+span.icon1 .fa, span.icon2 .fa{
+	font-size: 20px;
+}
+.rem-w3
+{
+	text-align: right;
+	padding-top: 5px;
+}
+.rem-w3 a
+{
+	color: #fff;
+	font-size: 14px;
+}
+@media all and (max-width:767px) {
+
+.main-content-agile {
+
+    width: 100%;
+}
+	}
+	/**************profile.html*******************/
+	/**************profile.html*******************/
+	#profile_screen
+	{
+	 background-color:rgb(1,32,112);	
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;	
+	position: relative;
+	}
+	#profile_screen .list-group
+	{
+	padding: 0px 10px;	
+	}
+	#profile_screen .list-group-item
+	{
+		background:transparent;
+		border-bottom:1px solid #000;
+		border-top:0;
+		border-left:0;
+		border-right:0;
+		color:#fff;
+		text-transform: uppercase;
+		
+	}
+	#profile_screen .list-group-item a
+	{
+	color:#000;
+	text-decoration: none;
+	}
+	.list-group-item a
+	{
+	font-size: 16px;
+	}
+	#profile_screen .list-group-item .badge
+	{
+	/*background:transparent;	*/
+	
+	}
+	#profile_screen .main-content-agile
+	{
+		padding-bottom: 10px;
+		padding-top: 70px;
+		
+	}
+	.footer-login
+	{
+    background-color: #fff;
+    overflow: hidden;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0;
+    
+	}
+
+	/**************listing.html***************/
+		#listing_screen
+	{
+	 background-color:rgb(107,132,232);	
+	background-size: cover;
+    background-repeat: no-repeat;
+	height: 100%;	
+	position: relative;
+	overflow:hidden;
+	}
+	#listing_screen .header-login
+	{
+     margin:0px;
+	}
+	.profile-img
+	{
+		border: 2px solid #333;
+		border-radius:2px; padding:3px;
+		text-align: center;
+		background-color: #D8DDE3;
+	}
+	.profile-img img
+	{
+		text-align: center;
+	}
+	.profile-detail
+	{
+		padding: 10px;
+	}
+	.profile-heading
+	{
+		font-size:18px;
+		color:#fff;
+		text-transform: uppercase;
+		padding-bottom:5px;
+	}
+	.profile-subheading
+	{
+		font-size:16px;
+		
+	}
+
+	.profile-subheading p
+	{
+		padding-top:5px;	
+
+		padding-bottom:0px !important;	
+	}
+	.contact-icon .col-md-4
+	{
+
+		background-color:#fff;
+		//padding: 20px 0;
+		height: 70px;
+		overflow: hidden;
+		line-height: 75px;
+	}
+	.contact-icon .fa
+	{
+		font-size: 25px;
+	}
+	.contact-icon
+	{
+     margin-bottom:50px;
+		
+	}
+	#listing_screen .footer-login
+	{
+		clear:both;
+     position: fixed;
+     bottom:0px;
+     margin-top:30px;
+  
+    padding: 0px;
+	}
+	#listing_screen .main-content-agile
+	{
+ background-color:rgb(1,32,112);	
+ min-height: 700px;
+ height: 100%;
+ margin-top:7px;
+	}
+	.margin5px
+	{
+		margin:0 5px;
+		width: 30%;
+	}
+	.notify .fa
+	{
+		color: #000;
+		font-size:18px;
+		font-weight: bold;
+	}
+	/***************notification*****************/
+	#notification .list-group-item
+	{
+		
+		text-transform: initial;
+		
+	}
+	#notification .list-group-item .userimg
+	{
+		width: 40px;
+		border-radius: 50%;		
+	}
+	#notification .list-group-item .right_arrow
+	{
+		padding-top:10px;
+	}
+	.last_seen
+	{
+		color: #eee;
+		font-size: 12px;
+		text-align: right;
+	}

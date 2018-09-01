@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-left-slide-menu.css" />
+      <link rel="stylesheet" type="text/css" href="css/index.css" />
+      <link rel="stylesheet" type="text/css" href="css/header.css" />
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap-left-slide-menu.js"></script>
+      <script type="text/javascript" src="js/header.js"></script>
+      <style type="text/css">
+      
+      #loader{
+        position: absolute;
+        width: 100px; /*the image width*/
+        height: 100px; /*the image height*/
+        left: 50%;
+        top: 50%;
+        margin-left: -50px; /*half the image width*/
+        margin-top: -50px; /*half the image height*/
+    }
+    </style>
+    </head>
+    <body>
+
+    <img src="img/loader.gif" id="loader" style="display: none;">
+      <div id="notification">
+        <div id="profile_screen" style="background: rgb(239, 239, 239)">
+          <!--header-->
+         <div class="header-login">
+          <div class="col-xs-2 col-md-3">
+            <div id="wrapper">
+              <div class="overlay" style="display: none;"></div>
+              <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                  <li>
+                    <a href="user-profile.html">
+                      <i class="fa fa-user" aria-hidden="true"></i> Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="listing.html">
+                      <i class="fa fa-list" aria-hidden="true"></i> Dealer list
+                    </a>
+                  </li>
+                  <li>
+                    <a href="notification.html">
+                      <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);" class="logout">
+                      <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <div id="page-content-wrapper">
+                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                  <span class="hamb-top"></span>
+                  <span class="hamb-middle"></span>
+                  <span class="hamb-bottom"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-8 col-md-6 text-center">Notifications</div>
+          <div class="col-xs-2 col-md-3 text-right notify">
+            <a href="notification.html">
+            
+              <i class="fa fa-bell-o" aria-hidden="true">
+                <span class="num bell">0</span>
+              </i>
+            </a>
+          </div>
+        </div>
+          <!--//header-->
+          <!--main-->
+          <div class="main-content-agile">
+            <ul class="list-group" id="notifications">
+              <!-- <li class="list-group-item">
+                <a href="listing.html">
+                  <img src="img/userimg.jpg" class="userimg"> Lorem Ipsum
+    
+                </a>
+                <span class="badge">
+                  <img src="img/right_arrow.png" class="right_arrow">
+                </span>
+              </li> -->
+            </ul>
+          </div>
+          <!--//main-->
+          <div class="footer-login" style="height: 72px;">
+              <div class="contact-icon">
+                <div class="col-xs-4 col-md-4 text-center">
+                  <a href="user-profile.html" >
+                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size:38px"></i>
+                  </a>
+                </div>
+                <div class="col-xs-4 col-md-4 text-center">
+                  <a href="listing.html" >
+                    <i class="fa fa-handshake-o" aria-hidden="true" style="font-size:38px"></i>
+                  </a>
+                </div>
+                <div class="col-xs-4 col-md-4 text-center">
+                  <a href="javascript:void(0)" >
+                    <i class="fa fa-building-o" aria-hidden="true" style="font-size:38px"></i>
+                  </a>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </body>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+          if (typeof(Storage) != "undefined") {
+              var userId = localStorage.getItem("cookies_user_id");
+
+              $.ajax({
+                  url:'https://elite-dealers.com/api/notifi_list.php',
+                  data:{user_id:userId},
+                  dataType:'json',
+                  type:"post",
+                  beforeSend: function(){
+                      $('#loader').show();
+                      $('#notification').hide();
+                  },
+                  success:function(xhr){ 
+                     //console.log("all user success");
+                      var parsed_data;
+                      if (typeof xhr == 'object'){
+                          parsed_data = xhr;
+                      }
+                      else {
+                          parsed_data = $.parseJSON(xhr);
+                      }
+                      console.log(xhr.messages);
+                      var dynamichtml = '<ul class="list" style="margin-left: -50px;">';
+                      var i=0;
+                      $.each(xhr.messages, function(key, val){ 
+                          console.log(val);
+                          i++;
+                           dynamichtml +='<li class="list-group-item"><a href="notify_details.html?newsid='+val.id+'"> '+val.title+' <span class="badge" style="float:right;"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a></li>';
+                      });
+                      $('#loader').hide();
+                      $('#notification').show();
+                      $('#notifications').html(dynamichtml);
+                  },
+                  error:function(data){
+                    $('#loader').hide();
+                      $('#notification').show();
+                  //    alert("Server Error."+data);
+                  }    
+              });
+          }
+
+          
+      });
+
+    </script>
+  </html>

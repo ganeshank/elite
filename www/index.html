@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-left-slide-menu.css" />
+      <link rel="stylesheet" type="text/css" href="css/index.css" />
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap-left-slide-menu.js"></script>
+      
+    </head>
+    <style type="text/css">
+      
+      #loader{
+        position: absolute;
+        width: 100px; /*the image width*/
+        height: 100px; /*the image height*/
+        left: 50%;
+        top: 50%;
+        margin-left: -50px; /*half the image width*/
+        margin-top: -50px; /*half the image height*/
+    }
+    </style>
+    <body>
+    <img src="img/loader.gif" id="loader" style="display: none;">
+      <div id="login_screen">
+        <div class="center-container">
+          <div class="main-content-agile">
+            <div class="wthree-pro">
+              <img src="img/logo.png" style="height:60px;width:80px">
+                <div class="text-center logintxt">Login</div>
+              </div>
+              <div class="sub-main-w3">
+                <input placeholder="Username" name="mail" id="user" type="email" required>
+                  <span class="icon1">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </span>
+                  <input  placeholder="Password" name="Password" id="pass" type="password" required>
+                    <span class="icon2">
+                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    </span>
+                    <a href="#" id="login-click">
+                      <button type="button" id="loginbtn">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>Login
+                      </button>
+                    </a>
+                  </div>
+                </div>
+           
+              </div>
+            </div>
+          </body>
+
+<script type="text/javascript">
+  $("#login-click").click(function(){
+  var username = $("#user").val();
+  var password = $("#pass").val();
+
+  if(username==""){
+    alert("Username can not be empty");
+  }else if(password==""){
+    alert("Password can not be empty");
+  }else{
+    // login check
+    $.ajax({
+            url:'https://elite-dealers.com/api/checklogin.php',
+            data:{ email: username, password: password },
+            type:"POST",
+            beforeSend: function(){
+                $('#loader').show();
+                $('#login_screen').hide();
+            },
+            success:function(data){
+                console.log(data);
+                if (typeof data == 'object'){
+                    var parsed_data = data;
+                }
+                else {
+                    var parsed_data = $.parseJSON(data);
+
+                }
+                if(parsed_data.status == "success"){
+                    if (typeof(Storage) != "undefined") {
+                        localStorage.setItem("cookies_user_name", parsed_data.user.username);
+                        localStorage.setItem("cookies_user_id", parsed_data.user.P_Id);
+                         localStorage.setItem("cookies_user_territory", parsed_data.user.territory);
+
+                        window.location.href="listing.html";
+                    }
+                }
+                else{
+                    $('#loader').hide();
+                    $('#login_screen').show();
+                    alert("Username/Password is wrong");
+                }
+            },
+            error:function(data){ 
+                $('#loader').hide();
+                $('#login_screen').show();
+            }
+        
+        });
+  }
+});
+
+</script>
+
+
+        </html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-left-slide-menu.css" />
+            <link rel="stylesheet" type="text/css" href="css/index.css" />
+            <link rel="stylesheet" type="text/css" href="css/header.css" />
+            <script type="text/javascript" src="js/jquery.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap-left-slide-menu.js"></script>
+            <script type="text/javascript" src="js/header.js"></script>
+            <script src="cordova.js"></script>
+        </head>
+        <style type="text/css">
+      
+          #loader{
+            position: absolute;
+            width: 100px; /*the image width*/
+            height: 100px; /*the image height*/
+            left: 50%;
+            top: 50%;
+            margin-left: -50px; /*half the image width*/
+            margin-top: -50px; /*half the image height*/
+        }
+        </style>
+        <body>
+        <img src="img/loader.gif" id="loader" style="display: none;">
+            <div id="listing_screen" style="background: rgb(239, 239, 239)">
+                <!--header-->
+                <!--header-->
+                <div class="header-login">
+          <div class="col-xs-2 col-md-3">
+            <div id="wrapper">
+              <div class="overlay" style="display: none;"></div>
+              <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                  <li>
+                    <a href="user-profile.html">
+                      <i class="fa fa-user" aria-hidden="true"></i> Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="listing.html">
+                      <i class="fa fa-list" aria-hidden="true"></i> Dealer list
+                    </a>
+                  </li>
+                  <li>
+                    <a href="notification.html">
+                      <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);" class="logout">
+                      <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <div id="page-content-wrapper">
+                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                  <span class="hamb-top"></span>
+                  <span class="hamb-middle"></span>
+                  <span class="hamb-bottom"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-8 col-md-6 text-center">Dealers Profile</div>
+          <div class="col-xs-2 col-md-3 text-right notify">
+            <a href="notification.html">
+            
+              <i class="fa fa-bell-o" aria-hidden="true">
+                <span class="num bell">0</span>
+              </i>
+            </a>
+          </div>
+        </div>
+                <!--//header-->
+                <!--main-->
+                <div class="main-content-agile" style="background: rgb(239, 239, 239)">
+                    <div class="profile-img">
+                        <img id="dealer-img" src="img/TMLOGO.png" style="height: 110px;">
+                        </div>
+                        <div class="profile-detail">
+                            <div class="profile-heading" id="dealer-name" style="color: #000"></div>
+                            <div class="profile-subheading">
+                                <p id="dealer-add"></p>
+                                <p id="dealer-location"></p>
+                                <p id="dealer-contact"></p>
+                            </div>
+                        </div>
+                        <div class="contact-icon" style="margin-top: 50px;">
+                            <div class="col-xs-4 col-md-4 text-center call-href">
+                                <!-- <a href="#" id="call">
+                                  <i class="fa fa-phone" aria-hidden="true"></i>
+                                </a> -->
+                            </div>
+                            <div class="col-xs-4 col-md-4 text-center margin5px sms-href">
+                                <!-- <a href="#" id="sms">
+                                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                </a> -->
+                            </div>
+                            <div class="col-xs-4 col-md-4 text-center">
+							<input type="hidden" id="emailto">
+                              <a href="#" id="mail">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                              </a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--//main-->
+                    <div class="footer-login" style="height: 72px;">
+                      <div class="contact-icon">
+                          <div class="col-xs-4 col-md-4 text-center">
+                            <a href="user-profile.html" >
+                              <i class="fa fa-user-circle" aria-hidden="true" style="font-size:38px"></i>
+                            </a>
+                          </div>
+                          <div class="col-xs-4 col-md-4 text-center">
+                            <a href="listing.html" >
+                              <i class="fa fa-handshake-o" aria-hidden="true" style="font-size:38px"></i>
+                            </a>
+                          </div>
+                          <div class="col-xs-4 col-md-4 text-center">
+                            <a href="javascript:void(0)" >
+                              <i class="fa fa-building-o" aria-hidden="true" style="font-size:38px"></i>
+                            </a>
+                          </div>
+                      </div>
+                    </div>
+        </div>
+                    
+                </div>
+            </body>
+            <script type="text/javascript">
+				$("#mail").click(function(){
+					var email = $("#emailto").text();
+					var emailto = "mailto:"+email;
+					window.open(emailto, '_system');
+					return false;
+				});
+
+                var phone = "";
+                
+                $(document).ready(function(){
+
+
+                   
+                    var dealerid = getUrlParameter('dealerid');
+                    
+
+                    $.ajax({
+                        url:'https://elite-dealers.com/api/dealersprofil.php',
+                        data:{dealerid:dealerid},
+                        dataType:'json',
+                        type:"post",
+                        beforeSend: function(){
+                            $('#loader').show();
+                            $('#listing_screen').hide();
+                        },
+                        success:function(data){ 
+                           console.log("all details success");
+                            var parsed_data;
+                            if (typeof data == 'object'){
+                                parsed_data = data;
+                            }else {
+                                parsed_data = $.parseJSON(data);
+                            }
+                            console.log('parsed_data');
+                            console.log(parsed_data);
+
+                            if(parsed_data.logo=="no-image.gif"){
+                                $("#dealer-img").attr("src","img/"+parsed_data.logo);
+                            }else{
+                                $("#dealer-img").attr("src",parsed_data.logo);
+                            }
+                            
+                            phone = parsed_data.direct==" "?parsed_data.fax:parsed_data.direct;
+
+                            $("#dealer-name").html(parsed_data.name);
+                            $("#dealer-add").html(parsed_data.address);
+                            $("#dealer-location").html(parsed_data.city + ", " +parsed_data.state);
+                            $("#dealer-contact").html(phone);
+							$("#emailto").html(parsed_data.email);
+
+                            phone = phone.replace('(','');
+                            phone = phone.replace(') ','');
+                            phone = phone.replace('-','');
+
+                            var htmlVal = '<a href="#" onclick="window.open(\'tel:'+phone+'\', \'_system\'); return false;" id="call"><i class="fa fa-phone" aria-hidden="true"></i></a>';
+
+                            var htmlSMSVal = '<a href="#" onclick="window.open(\'sms:'+phone+'\', \'_system\'); return false;" id="call"><i class="fa fa-commenting-o" aria-hidden="true"></i></a>';
+
+                          /*  var htmlVal = '<a href="#" onclick="window.open(\'tel:5555\', \'_system\'); return false;" id="call"><i class="fa fa-phone" aria-hidden="true"></i></a>';*/
+
+                            //htmlVal = htmlVal.replace("5555", phone);
+
+
+                            $(".call-href").html(htmlVal);
+                            $(".sms-href").html(htmlSMSVal);
+
+                            
+
+                        //    $("#call").attr("onclick", "window.open('tel:"+phone+"', '_system'); return false;");
+
+                           // $('#call').attr( 'href','tel:7411087019');
+
+                            $('#loader').hide();
+                            $('#listing_screen').show();
+                            //$('#userdetailstag').html(usrdetail);
+                        },
+                        error:function(data){
+                            $('#loader').hide();
+                            $('#listing_screen').show();
+                         //   alert("Fetch user server Error.");
+                        }    
+                    });
+
+                });
+
+                /*$("#call").click(function(e){
+                   e.preventDefault();
+                    var val = localStorage.getItem("phone");              
+                    window.open('tel:'+val, '_system');
+                });
+
+                $("#sms").click(function(e){
+                   e.preventDefault();
+                    var val = localStorage.getItem("phone");              
+                    window.open('sms:'+val, '_system');
+                });*/
+               
+
+                
+                function getUrlParameter(name) {
+                    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                    var results = regex.exec(location.search);
+                    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+                };      
+
+
+            </script>
+
+
+
+
+        </html>
