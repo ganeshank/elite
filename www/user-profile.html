@@ -19,7 +19,7 @@
             <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
         </head>
         <style type="text/css">
-      
+
           #loader{
             position: absolute;
             width: 100px; /*the image width*/
@@ -72,10 +72,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-xs-8 col-md-6 text-center">Username</div>
+                  <div class="col-xs-8 col-md-6 text-center">User Profile</div>
                   <div class="col-xs-2 col-md-3 text-right notify">
                     <a href="notification.html">
-                    
+
                       <i class="fa fa-bell-o" aria-hidden="true">
                         <span class="num bell">0</span>
                       </i>
@@ -98,27 +98,27 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="pwd" class="font-label">Name:</label>
+                      <label for="name" class="font-label">Name:</label>
                       <input type="text" class="form-control" id="name" name="pwd" required>
                     </div>
                     <div class="form-group">
-                      <label for="pwd" class="font-label">Bussiness Name:</label>
+                      <label for="bussinessname" class="font-label">Bussiness Name:</label>
                       <input type="text" class="form-control" id="bname" name="pwd" required>
                     </div>
                     <div class="form-group">
-                      <label for="pwd" class="font-label">Address:</label>
+                      <label for="address" class="font-label">Address:</label>
                       <textarea class="form-control" rows="5" id="address" required></textarea>
                     </div>
                     <div class="form-group">
-                      <label for="pwd" class="font-label">Phone Number:</label>
+                      <label for="phonenumber" class="font-label">Phone Number:</label>
                       <input type="tel" class="form-control" id="phone" required
            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="formatPhone(this);"  name="pwd">
                     </div>
                     <div class="form-group">
-                      <label for="pwd" class="font-label">Email:</label>
+                      <label for="email" class="font-label">Email:</label>
                       <input type="email" class="form-control" id="email" name="pwd" required>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-default btn-lg btn-block update-user">Update</button>
                   <!-- </form> -->
                 </div>
@@ -146,7 +146,7 @@
             </body>
             <script type="text/javascript">
             $(document).ready(function(){
-              
+
                 if (typeof(Storage) !== "undefined") {
                     // Store
                     var userId = localStorage.getItem("cookies_user_id");
@@ -155,7 +155,7 @@
                     alert("Something goes wrong!!!");
                 }
 
-                
+
             });
 
             function formatPhone(obj) {
@@ -180,7 +180,7 @@
                             $('#loader').show();
                             $('#listing_screen').hide();
                         },
-                        success:function(xhr){ 
+                        success:function(xhr){
                            //console.log("all user success");
                             var parsed_data;
                             if (typeof xhr == 'object'){
@@ -192,7 +192,7 @@
                             console.log(xhr.messages);
                             var dynamichtml = '<ul class="list">';
                             var i=0;
-                            $.each(xhr.messages, function(key, val){ 
+                            $.each(xhr.messages, function(key, val){
                                // console.log(val);
                                $("#name").val(val.username);
                                $("#email").val(val.email);
@@ -200,15 +200,15 @@
                                $("#address").val(val.address);
                                $("#phone").val(val.phone);
 
-                                
+
                             });
 
                             console.log(xhr.territory);
 
                             var htmlOption="";
 
-                            $.each(xhr.territory, function(key, val){ 
-                               
+                            $.each(xhr.territory, function(key, val){
+
                                 var isAvailable = checkTerritory(xhr.messages[0].territory, val.id);
                                 var htmlContent = "";
                                 if(isAvailable){
@@ -216,7 +216,7 @@
                                 }else{
                                   htmlContent = "<option value='"+ val.id+"'>"+val.name+"</option>";
                                 }
-                                
+
                                 htmlOption = htmlOption + htmlContent;
                             });
 
@@ -231,7 +231,7 @@
                             $('#loader').hide();
                             $('#listing_screen').show();
                        //     alert("Server Error.");
-                        }  
+                        }
                   });
                 }
 
@@ -252,14 +252,14 @@
                     var address = $("#address").val();
                     var email = $("#email").val();
                     var phone = $("#phone").val();
-                    var user_id = 43;
+                    var user_id = localStorage.getItem("cookies_user_id");
 
                     var territoryList = [];
                     var terName = [];
-                    $.each($("#territory option:selected"), function(){            
+                    $.each($("#territory option:selected"), function(){
                         territoryList.push($(this).val());
                         terName.push($(this).text());
-                    });        
+                    });
 
                     var tName = terName.join(",");
 
@@ -274,7 +274,7 @@
                             $('#loader').show();
                             $('#listing_screen').hide();
                         },
-                        success:function(xhr){ 
+                        success:function(xhr){
                            //console.log("all user success");
                             var parsed_data;
                             if (typeof xhr == 'object'){
@@ -290,22 +290,22 @@
 
                             alert("Updated successfully.");
                             window.location.reload();
-                            
+
                         },
                         error:function(data){
                             $('#loader').hide();
                             $('#listing_screen').show();
                         //    alert("Server Error.");
-                        }  
-                      }); 
-                    }                
+                        }
+                      });
+                    }
 
 
                 });
-                
+
 
                 function validate(name, bname, add, email, phone, territoryList){
-                  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+                  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                     if(name==""){
                       alert("name can not be empty");
                       return false;
@@ -315,9 +315,9 @@
                     }else if(add==""){
                       alert("Address can not be empty");
                       return false;
-                    }else if(!(email.match(mailformat))) {  
-                      alert("You have entered an invalid email address!");  
-                      return false;  
+                    }else if(!(email.match(mailformat))) {
+                      alert("You have entered an invalid email address!");
+                      return false;
                     } else if(territoryList.length<=0){
                       alert("Please select atleast one territory");
                       return false;
@@ -328,7 +328,7 @@
 
                 }
 
-                    
+
             </script>
 
 
